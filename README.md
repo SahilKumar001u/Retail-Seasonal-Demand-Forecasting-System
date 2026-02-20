@@ -263,4 +263,13 @@ docker-compose up --build
 * Cloud scaling
 
 ---
+## 🚀 Consumer Flow
+1) Getting Started
+   <img width="430" height="587" alt="image" src="https://github.com/user-attachments/assets/e2131944-478c-423e-a181-50ed0ef0af75" />
+
+2) Getting the Forecast
+   <img width="600" height="765" alt="image" src="https://github.com/user-attachments/assets/7918d298-48d8-4703-a794-34a0d8deee8b" />
+
+3) Understanding Results
+   <img width="1640" height="290" alt="image" src="https://github.com/user-attachments/assets/2a61a624-21b4-4a28-8412-b37175a56eee" />
 
