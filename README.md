@@ -1,184 +1,266 @@
-Retail Seasonal Demand Forecasting System
-Overview
-This project is a Data Science / Machine Learning system designed to forecast retail demand at the product category level using historical sales data. It helps retail businesses optimize inventory, reduce stockouts, and improve supply chain planning.
 
-Problem Statement
-Retail businesses experience significant fluctuations in demand due to:
-•	Seasonal trends
-•	Promotions
-•	Changing customer behavior
-Without accurate forecasting, businesses face:
-•	Overstocking → Increased holding costs
-•	Stockouts → Lost sales
-•	Poor supply chain planning
+# 📦 Retail Seasonal Demand Forecasting System
 
-Objectives
-Primary Goals
-•	Forecast category-level demand using historical data
-•	Capture seasonality and trends using ARIMA/SARIMAX
-•	Provide REST API for forecast retrieval
-•	Build an interactive dashboard for visualization
-•	Enable configurable forecasting horizon
-Stretch Goals
-•	Auto-ARIMA for automatic parameter tuning
-•	Multi-seasonality handling
-•	External regressors (price, promotions, holidays)
-•	Confidence intervals for forecasts
-•	Real-time data streaming
-•	Model retraining pipeline
+A full-stack **Data Science & Machine Learning system** that forecasts retail demand using time series models (ARIMA/SARIMAX). It helps businesses optimize inventory, reduce stockouts, and improve supply chain decisions.
 
 
-Target Users
-•	Retail planners
-•	Inventory managers
-•	Data analysts
-•	Supply chain teams
+## 📌 Problem Statement
 
-Tech Stack
-Frontend
-•	React
-•	Tailwind CSS
-•	Recharts
-Backend
-•	FastAPI (Python)
-Machine Learning
-•	statsmodels (ARIMA / SARIMAX)
-•	pandas
-•	numpy
-Database
-•	PostgreSQL
-Deployment
-•	Docker
-•	AWS EC2
+Retail demand fluctuates due to:
 
-System Architecture
-Components:
-•	Frontend (React) → User interaction & visualization
-•	Backend API (FastAPI) → Handles requests & responses
-•	Model Service → Training & forecasting
-•	Database (PostgreSQL) → Stores processed data & models
+* Seasonal trends
+* Holidays and promotions
+* Customer behavior changes
 
-Features:
-Core Features
-•	Upload retail dataset (CSV)
-•	Data preprocessing and validation
-•	Category-level aggregation
-•	ARIMA-based forecasting
-•	REST API endpoints
-•	Interactive dashboard
-ML-Specific Features
-•	Train model per category
-•	Save trained model parameters
-•	Forecast configurable horizon
-•	Seasonal decomposition
-•	Model evaluation metrics (sMAPE, RMSE)
+Without accurate forecasting:
 
-Dataset
-Example Dataset: UCI Online Retail Dataset
-Fields
-•	InvoiceNo
-•	StockCode
-•	Description
-•	Quantity
-•	InvoiceDate
-•	UnitPrice
-•	CustomerID
-•	Country
-Derived Features
-•	Product Category
-•	Sales = Quantity × UnitPrice
-•	Time index (daily / weekly / monthly)
+* Overstocking increases costs
+* Stockouts reduce revenue
+* Supply chain planning becomes inefficient
+
+👉 This project builds a system to **predict demand at the product category level** using historical data.
+
+---
+
+## 🎯 Objectives
+
+### Core Objectives
+
+* Forecast demand using historical sales data
+* Capture trends and seasonality (ARIMA/SARIMAX)
+* Provide REST APIs for predictions
+* Build an interactive dashboard
+* Allow configurable forecast horizon
+
+### Stretch Goals
+
+* Auto-ARIMA
+* Multi-seasonality handling
+* External regressors (price, holidays)
+* Confidence intervals
+* Real-time data integration
+* Automated retraining
+
+---
+
+## 🧠 Machine Learning Approach
+
+### Model
+
+* ARIMA / SARIMAX
+
+### Workflow
+
+1. Stationarity check (ADF test)
+2. Differencing
+3. Parameter selection (p, d, q, P, D, Q, s)
+4. Model training per category
+5. Forecast generation
+
+### Metrics
+
+* sMAPE ≤ 20%
+* RMSE ≤ 10–20%
+* Accuracy ≥ 80%
+
+---
+
+## 🗂️ Dataset
+
+**Source:** UCI Online Retail Dataset
+
+### Features
+
+* InvoiceNo
+* StockCode
+* Description
+* Quantity
+* InvoiceDate
+* UnitPrice
+* CustomerID
+* Country
+
+### Derived Fields
+
+* Product Category
+* Sales = Quantity × UnitPrice
+* Time Index (daily/weekly/monthly)
+
+---
+
+## 🔄 Data Pipeline
+
+1. **Ingestion**
+
+   * CSV upload / DB connection
+   * Schema validation
+
+2. **Cleaning**
+
+   * Remove negative quantities
+   * Handle missing values
+   * Convert timestamps
+
+3. **Aggregation**
+
+   * Group by category and time
+
+4. **Feature Engineering**
+
+   * Lag features
+   * Rolling averages
+   * Seasonal decomposition
+
+5. **Storage**
+
+   * PostgreSQL
+
+---
 
 
-Data Pipeline
-1.	Data Ingestion
-o	Upload CSV or connect to database
-o	Schema validation
-2.	Data Cleaning
-o	Remove negative quantities (returns)
-o	Handle missing values
-o	Convert timestamps
-3.	Aggregation
-o	Group by category and time interval
-4.	Feature Engineering
-o	Rolling averages
-o	Lag features
-o	Seasonal decomposition
-5.	Storage
-o	Store processed data in PostgreSQL
+## ⚙️ Tech Stack
 
-Machine Learning Approach
-Model: ARIMA / SARIMAX
-Captures:
-•	Trend (differencing)
-•	Seasonality
-•	Autocorrelation
-Workflow
-1.	Stationarity check (ADF test)
-2.	Differencing
-3.	Parameter selection (p, d, q, P, D, Q, s)
-4.	Model fitting per category
-5.	Forecast generation
+### Frontend
 
+* React
+* Tailwind CSS
+* Recharts
 
-Explainability
-•	Historical vs predicted plots
-•	Confidence intervals
-•	Model parameters
-•	Residual diagnostics
-•	Error metrics (sMAPE, RMSE)
+### Backend
 
-Non-Functional Requirements
-•	API response time < 500ms
-•	Scalable architecture
-•	Data consistency
-•	Error handling
-•	Secure endpoints
+* FastAPI
 
-Constraints & Assumptions
-•	Sufficient historical data is available
-•	Categories are predefined or mapped
-•	Seasonality is stable
-•	ARIMA works best for linear patterns
+### Machine Learning
 
-Success Metrics
-•	sMAPE ≤ 20%
-•	RMSE ≤ 10–20%
-•	Forecast accuracy ≥ 80–90%
-•	API latency ≤ 500 ms
-•	User engagement
+* pandas
+* numpy
+* statsmodels
 
-Risks
-•	Poor data quality
-•	Concept drift (changing demand patterns)
-•	Sparse data for some categories
-•	Overfitting
+### Database
 
-Setup Instructions
-Prerequisites
-•	Python 3.9+
-•	Node.js
-•	PostgreSQL
-•	Docker (optional)
-Backend Setup
+* PostgreSQL
+
+### Deployment
+
+* Docker
+* AWS EC2
+
+---
+
+## 🔥 Features
+
+### Core Features
+
+* Upload dataset
+* Category-level aggregation
+* ARIMA forecasting
+* REST API
+* Interactive dashboard
+
+### ML Features
+
+* Per-category models
+* Configurable forecast horizon
+* Seasonal decomposition
+* Error metrics (sMAPE, RMSE)
+* Residual diagnostics
+
+---
+
+## 💻 Installation
+
+### Clone Repo
+
+```bash
+git clone https://github.com/your-username/retail-forecasting.git
+cd retail-forecasting
+```
+
+### Backend Setup
+
+```bash
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
-Frontend Setup
+```
+
+### Frontend Setup
+
+```bash
 cd frontend
 npm install
-npm run dev
-Docker
+npm start
+```
+
+### Database Setup
+
+* Install PostgreSQL
+* Create database
+* Update connection string
+
+---
+
+## 🐳 Docker Setup
+
+```bash
 docker-compose up --build
+```
 
-Future Improvements
-•	Auto-ARIMA implementation
-•	Real-time data ingestion
-•	Advanced models (Prophet, LSTM)
-•	Multi-category forecasting
-•	Cloud scaling
+---
 
+## ☁️ Deployment (AWS EC2)
 
-License
-This project is for academic purposes.
+* Launch EC2 instance
+* Install Docker
+* Deploy using Docker Compose
+* Expose API
+
+---
+
+## 📊 Dashboard Features
+
+* Historical vs forecast graph
+* Category selection
+* Adjustable forecast horizon
+* Seasonal decomposition
+* Performance metrics
+
+---
+
+## ⚡ Non-Functional Requirements
+
+* API latency < 500 ms
+* Scalable architecture
+* Secure endpoints
+* Proper error handling
+
+---
+
+## ⚠️ Risks
+
+* Poor data quality
+* Concept drift
+* Sparse category data
+* Overfitting
+
+---
+
+## 📦 Deliverables
+
+* Web Application
+* Forecast API
+* Dashboard
+* Documentation
+* Source Code
+
+---
+
+## 🚀 Future Work
+
+* Auto-ARIMA
+* Real-time data
+* Advanced models (LSTM, Prophet)
+* Cloud scaling
+
+---
 
