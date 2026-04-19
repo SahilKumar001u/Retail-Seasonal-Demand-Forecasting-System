@@ -1,0 +1,295 @@
+.app {
+  min-height: 100vh;
+}
+
+/* ── Global dark/light overrides for all cards, inputs, tables ── */
+
+/* Cards */
+.metric-box,
+.distribution-card,
+.investment-card,
+.kpi-table-card,
+.upload-card,
+.upload-info-card,
+.forecast-controls-section,
+.chart-card,
+.metrics-comparison-card,
+.forecast-table-card,
+.summary-card,
+.fc-chart-card,
+.fc-accuracy-card,
+.fc-table-card,
+.fc-metric-card,
+.fc-controls-bar,
+.empty-state {
+  background: var(--bg-card) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.metric-main-value,
+.summary-value,
+.fc-metric-value,
+.card-title,
+.chart-title,
+.fc-chart-title,
+.comparison-title,
+.table-title,
+.fc-table-card h3,
+.fc-accuracy-card h3,
+.company-name,
+.arr-value,
+.page-header h1,
+.controls-header h2 {
+  color: var(--text-primary) !important;
+}
+
+/* Investment card numbers - use accent for visibility */
+.stat-big-value {
+  color: var(--accent) !important;
+  font-weight: 800 !important;
+}
+
+.metric-title span,
+.card-title-group span,
+.fc-metric-label,
+.metric-label,
+.summary-label,
+.fc-chart-sub,
+.page-header p,
+.upload-description,
+.fc-bar-label,
+.stat-label-text,
+.stat-sublabel-text,
+.menu-label,
+.comparison-text,
+.date,
+.fc-legend {
+  color: var(--text-secondary) !important;
+}
+
+/* Borders */
+.kpi-data-table th,
+.kpi-data-table td,
+.fc-table th,
+.fc-table td,
+.forecast-table th,
+.forecast-table td,
+.sample-table th,
+.sample-table td {
+  border-color: var(--border-light) !important;
+}
+
+/* Table heads */
+.kpi-data-table thead,
+.fc-table thead,
+.forecast-table thead,
+.sample-table thead {
+  background: var(--bg-input) !important;
+}
+
+/* Table body text */
+.kpi-data-table td,
+.fc-table td,
+.forecast-table td {
+  color: var(--text-primary) !important;
+}
+
+/* Inputs & selects */
+input,
+select,
+textarea {
+  background: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Drop zone */
+.drop-zone {
+  background: var(--bg-input) !important;
+  border-color: var(--border) !important;
+}
+
+.drop-zone.has-file {
+  border-color: var(--success) !important;
+}
+
+/* File preview */
+.file-preview {
+  background: var(--bg-card) !important;
+}
+
+.file-name {
+  color: var(--text-primary) !important;
+}
+
+.file-size {
+  color: var(--text-secondary) !important;
+}
+
+/* Recharts */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--chart-grid) !important;
+}
+
+.recharts-text {
+  fill: var(--text-secondary) !important;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Metric progress bar track */
+.metric-progress-bar {
+  background: var(--border) !important;
+}
+
+/* Sector tag */
+.sector-tag {
+  background: var(--bg-input) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Metric bar track */
+.metric-bar,
+.fc-bar-track {
+  background: var(--bg-input) !important;
+}
+
+/* Export / filter buttons */
+.export-btn,
+.filter-button {
+  background: var(--bg-input) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--border) !important;
+}
+
+.export-btn:hover,
+.filter-button:hover {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+/* fc-refresh-btn */
+.fc-refresh-btn {
+  background: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+}
+
+.fc-refresh-btn:hover {
+  background: var(--bg-hover) !important;
+}
+
+/* Category dropdown */
+.fc-cat-btn {
+  background: var(--bg-input) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+.fc-cat-dropdown {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+.fc-cat-search {
+  background: var(--bg-input) !important;
+  border-color: var(--border-light) !important;
+  color: var(--text-primary) !important;
+}
+
+.fc-cat-item {
+  color: var(--text-primary) !important;
+}
+
+.fc-cat-item:hover {
+  background: var(--bg-hover) !important;
+}
+
+/* Horizon buttons */
+.fc-horizon-btn {
+  background: var(--bg-input) !important;
+  border-color: var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+
+.fc-horizon-btn:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background: var(--bg-card) !important;
+}
+
+/* Refreshing indicator */
+.refreshing-indicator {
+  background: var(--bg-card) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.refreshing-indicator span {
+  color: var(--accent) !important;
+}
+
+/* Tooltip */
+.fc-tooltip {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+.fc-tooltip-label {
+  color: var(--text-primary) !important;
+}
+
+/* Upload info card list */
+.requirements-list strong {
+  color: var(--text-primary) !important;
+}
+
+.requirements-list p {
+  color: var(--text-secondary) !important;
+}
+
+/* Page header */
+.page-header h1 {
+  color: var(--text-primary) !important;
+}
+
+.page-header p {
+  color: var(--text-secondary) !important;
+}
+
+/* Moic legend */
+.legend-text,
+.legend-row span {
+  color: var(--text-secondary) !important;
+}
+
+/* Chart tabs */
+.chart-tab-btn {
+  color: var(--text-secondary) !important;
+  background: transparent !important;
+}
+
+.chart-tab-btn.active {
+  color: var(--accent) !important;
+}
+
+/* No data banner */
+.no-data-banner {
+  background: var(--bg-card) !important;
+  border-color: var(--warning) !important;
+}
