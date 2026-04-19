@@ -10,13 +10,13 @@
 .page-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .page-header p {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .upload-container {
@@ -26,10 +26,10 @@
 }
 
 .upload-card {
-  background: white;
+  background: var(--bg-card);
   padding: 48px;
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm);
   text-align: center;
 }
 
@@ -52,13 +52,13 @@
 .upload-card h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text-primary);
   margin-bottom: 12px;
 }
 
 .upload-description {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 32px;
 }
@@ -310,7 +310,8 @@
 .sample-table {
   overflow-x: auto;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
 }
 
 .sample-table table {
@@ -320,18 +321,18 @@
 }
 
 .sample-table th {
-  background: #f9fafb;
+  background: var(--bg-hover);
   padding: 10px 12px;
   text-align: left;
   font-weight: 600;
-  color: #6b7280;
-  border-bottom: 1px solid #e5e7eb;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
 }
 
 .sample-table td {
   padding: 10px 12px;
-  color: #1f2937;
-  border-bottom: 1px solid #f3f4f6;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
 }
 
 @media (max-width: 1024px) {

@@ -13,14 +13,51 @@ const HORIZONS = [4, 8, 12];
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
+  
+  // Find the data point to get CI values
+  const dataPoint = payload[0]?.payload;
+  
   return (
     <div className="fc-tooltip">
       <p className="fc-tooltip-label">{label}</p>
-      {payload.map((p, i) => (
-        <p key={i} style={{ color: p.color }}>
-          {p.name}: <strong>${Number(p.value).toLocaleString()}</strong>
-        </p>
-      ))}
+      {payload.map((p, i) => {
+        // Skip CI bound lines from main display
+        if (p.name?.includes('Lower') || p.name?.includes('Upper')) return null;
+        // Skip if value is NaN or invalid
+        if (isNaN(p.value) || p.value === null || p.value === undefined) return null;
+        return (
+          <p key={i} style={{ color: p.color }}>
+            {p.name}: <strong>${Number(p.value).toLocaleString()}</strong>
+          </p>
+        );
+      })}
+      
+      {/* Show CI values if available and valid */}
+      {dataPoint?.arima_lower !== null && dataPoint?.arima_upper !== null && 
+       !isNaN(dataPoint?.arima_lower) && !isNaN(dataPoint?.arima_upper) && (
+        <div style={{ marginTop: '8px', fontSize: '12px', color: '#f97316' }}>
+          <p>ARIMA CI:</p>
+          <p style={{ marginLeft: '8px' }}>
+            Lower: <strong>${Number(dataPoint.arima_lower).toLocaleString()}</strong>
+          </p>
+          <p style={{ marginLeft: '8px' }}>
+            Upper: <strong>${Number(dataPoint.arima_upper).toLocaleString()}</strong>
+          </p>
+        </div>
+      )}
+      
+      {dataPoint?.sarima_lower !== null && dataPoint?.sarima_upper !== null && 
+       !isNaN(dataPoint?.sarima_lower) && !isNaN(dataPoint?.sarima_upper) && (
+        <div style={{ marginTop: '8px', fontSize: '12px', color: '#10b981' }}>
+          <p>SARIMA CI:</p>
+          <p style={{ marginLeft: '8px' }}>
+            Lower: <strong>${Number(dataPoint.sarima_lower).toLocaleString()}</strong>
+          </p>
+          <p style={{ marginLeft: '8px' }}>
+            Upper: <strong>${Number(dataPoint.sarima_upper).toLocaleString()}</strong>
+          </p>
+        </div>
+      )}
     </div>
   );
 };
@@ -143,6 +180,10 @@ const Forecast = () => {
       sarima: null,
       arima_ci: null,
       sarima_ci: null,
+      arima_lower: null,
+      arima_upper: null,
+      sarima_lower: null,
+      sarima_upper: null,
       type: 'historical'
     }));
     const fc = (forecastData.forecast || []).map(f => ({
@@ -153,6 +194,11 @@ const Forecast = () => {
       // CI stored as [lower, upper] tuple for Area chart
       arima_ci: [f.arima_lower ?? f.arima, f.arima_upper ?? f.arima],
       sarima_ci: [f.sarima_lower ?? f.sarima, f.sarima_upper ?? f.sarima],
+      // Individual bounds for tooltip
+      arima_lower: f.arima_lower ?? f.arima,
+      arima_upper: f.arima_upper ?? f.arima,
+      sarima_lower: f.sarima_lower ?? f.sarima,
+      sarima_upper: f.sarima_upper ?? f.sarima,
       type: 'forecast'
     }));
     // Connect last historical point to first forecast
@@ -414,10 +460,8 @@ const Forecast = () => {
                   stroke="none"
                   fill="url(#arimaCI)"
                   dot={false}
-                  name="ARIMA CI"
+                  name="ARIMA 95% CI"
                   connectNulls
-                  legendType="none"
-                  tooltipType="none"
                 />
                 {/* SARIMA 95% CI band */}
                 <Area
@@ -426,10 +470,8 @@ const Forecast = () => {
                   stroke="none"
                   fill="url(#sarimaCI)"
                   dot={false}
-                  name="SARIMA CI"
+                  name="SARIMA 95% CI"
                   connectNulls
-                  legendType="none"
-                  tooltipType="none"
                 />
                 {/* ARIMA forecast line */}
                 <Line
