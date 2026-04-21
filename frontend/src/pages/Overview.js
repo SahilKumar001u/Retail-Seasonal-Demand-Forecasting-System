@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Info, ChevronDown, Filter } from 'lucide-react';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './Overview.css';
+const API_BASE = process.env.REACT_APP_API_URL;
 
 const Overview = () => {
   const [dashboardData, setDashboardData] = useState(null);
@@ -19,7 +20,7 @@ const Overview = () => {
   const [tableFilterOpen, setTableFilterOpen] = useState(false);
   const [catPage, setCatPage] = useState(0);
 
-  const API_BASE = 'http://localhost:8000';
+
 
   useEffect(() => {
     fetchDashboardData();

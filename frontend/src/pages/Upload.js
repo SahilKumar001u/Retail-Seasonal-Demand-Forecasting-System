@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Upload as UploadIcon, FileSpreadsheet, CheckCircle, AlertCircle, X, Trash2 } from 'lucide-react';
 import './Upload.css';
+const API_BASE = process.env.REACT_APP_API_URL;
 
 const Upload = () => {
   const [file, setFile] = useState(null);
@@ -12,7 +13,7 @@ const Upload = () => {
   const [datasetPreview, setDatasetPreview] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
-  const API_BASE = 'http://localhost:8000';
+
 
   useEffect(() => {
     checkDatasetStatus();
