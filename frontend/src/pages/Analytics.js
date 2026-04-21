@@ -5,13 +5,9 @@ import {
   PieChart, Pie, Cell, AreaChart, Area, Legend
 } from 'recharts';
 import './Analytics.css';
-const API_BASE = process.env.REACT_APP_API_URL;
 
-
-<<<<<<< HEAD
-=======
+// ✅ FIXED LINE (removed merge conflict)
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
->>>>>>> 6ccd431b (final deployment)
 const COLORS = ['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#0ea5e9', '#f97316'];
 
 const formatCurrency = (v) =>

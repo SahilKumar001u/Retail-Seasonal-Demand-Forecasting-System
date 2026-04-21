@@ -13,11 +13,7 @@ const Upload = () => {
   const [datasetPreview, setDatasetPreview] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
-<<<<<<< HEAD
-
-=======
-  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
->>>>>>> 6ccd431b (final deployment)
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
     checkDatasetStatus();
