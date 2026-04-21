@@ -20,7 +20,11 @@ const Overview = () => {
   const [tableFilterOpen, setTableFilterOpen] = useState(false);
   const [catPage, setCatPage] = useState(0);
 
+<<<<<<< HEAD
 
+=======
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+>>>>>>> 6ccd431b (final deployment)
 
   useEffect(() => {
     fetchDashboardData();

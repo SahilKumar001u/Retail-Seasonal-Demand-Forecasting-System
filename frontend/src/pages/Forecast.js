@@ -8,7 +8,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 import './Forecast.css';
 
+<<<<<<< HEAD
 const API_BASE = process.env.REACT_APP_API_URL;
+=======
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+>>>>>>> 6ccd431b (final deployment)
 const HORIZONS = [4, 8, 12];
 
 const CustomTooltip = ({ active, payload, label }) => {
