@@ -41,7 +41,7 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://retail_user:retail_password@db:5432/retail_db
-      CORS_ORIGIN: http://localhost
+      CORS_ORIGIN: http://52.62.85.19:3000 # 🔥 FIXED
     ports:
       - "8000:8000"
     volumes:
@@ -55,7 +55,7 @@ services:
     depends_on:
       - backend
     ports:
-      - "3000:80"
+      - "3000:80" # keep this if you want port 3000
 
 volumes:
   postgres_data:
