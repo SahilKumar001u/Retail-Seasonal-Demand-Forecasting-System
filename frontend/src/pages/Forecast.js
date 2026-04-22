@@ -409,8 +409,8 @@ const Forecast = () => {
               <ComposedChart data={chartData} margin={{ top: 10, right: 20, left: 10, bottom: 5 }}>
                 <defs>
                   <linearGradient id="actualGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.15} />
-                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                    <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.15} />
+                    <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="arimaCI" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#f97316" stopOpacity={0.18} />
@@ -446,7 +446,7 @@ const Forecast = () => {
                 <Area
                   type="monotone"
                   dataKey="actual"
-                  stroke="#6366f1"
+                  stroke="#0ea5e9"
                   strokeWidth={2.5}
                   fill="url(#actualGrad)"
                   dot={false}

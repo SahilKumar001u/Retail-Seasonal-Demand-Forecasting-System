@@ -140,9 +140,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
   color: #4b5563;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .metric-icon {
@@ -376,15 +377,17 @@
 }
 
 .card-title {
-  font-size: 14px;
+  font-size: 19px;
   font-weight: 700;
   color: #1f2937;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .card-title-small {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 700;
   color: #1f2937;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .card-controls {

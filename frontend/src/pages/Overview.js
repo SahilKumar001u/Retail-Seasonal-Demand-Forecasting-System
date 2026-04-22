@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Info, ChevronDown, Filter } from 'lucide-react';
+import { ChevronDown, Filter } from 'lucide-react';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './Overview.css';
 const API_BASE = process.env.REACT_APP_API_URL;
@@ -20,7 +20,7 @@ const Overview = () => {
   const [tableFilterOpen, setTableFilterOpen] = useState(false);
   const [catPage, setCatPage] = useState(0);
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
     fetchDashboardData();
@@ -254,9 +254,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
         <div className="metric-box balance-box">
           <div className="metric-box-header">
             <div className="metric-title">
-              <span className="metric-icon">💰</span>
               <span>Total Sales Revenue</span>
-              <Info size={16} className="info-icon-small" />
             </div>
 
           </div>
@@ -275,9 +273,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
         <div className="metric-box goal-box">
           <div className="metric-box-header">
             <div className="metric-title">
-              <span className="metric-icon">🎯</span>
               <span>Forecast Accuracy</span>
-              <Info size={16} className="info-icon-small" />
             </div>
 
           </div>
@@ -307,9 +303,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
         <div className="metric-box moic-box">
           <div className="metric-box-header">
             <div className="metric-title">
-              <span className="metric-icon">📊</span>
               <span>Seasonal Demand Trends</span>
-              <Info size={16} className="info-icon-small" />
             </div>
             <div className="header-controls" style={{ position: 'relative' }}>
               <button
@@ -378,9 +372,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
         <div className="distribution-card">
           <div className="card-header-row">
             <div className="card-title-group">
-              <span className="card-icon">📈</span>
               <span className="card-title">Sales Distribution</span>
-              <Info size={16} className="info-icon-small" />
             </div>
             <div className="card-controls" style={{ position: 'relative' }}>
 
@@ -435,8 +427,8 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
             <AreaChart data={distributionData}>
               <defs>
                 <linearGradient id="actualGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#c7d2fe" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#c7d2fe" stopOpacity={0.05} />
+                  <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.4} />
+                  <stop offset="95%" stopColor="#38bdf8" stopOpacity={0.05} />
                 </linearGradient>
                 <linearGradient id="forecastGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#d1fae5" stopOpacity={0.4} />
@@ -450,7 +442,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
               <Area
                 type="monotone"
                 dataKey="sales"
-                stroke={activeChartTab === 'Forecasted Sales' ? '#10b981' : '#8b5cf6'}
+                stroke={activeChartTab === 'Forecasted Sales' ? '#10b981' : '#0ea5e9'}
                 fill={activeChartTab === 'Forecasted Sales' ? 'url(#forecastGradient)' : 'url(#actualGradient)'}
                 strokeWidth={2}
               />
@@ -458,7 +450,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
           </ResponsiveContainer>
           <div className="chart-legend-row">
             <div className="legend-item-inline">
-              <span className="legend-dot" style={{ backgroundColor: activeChartTab === 'Forecasted Sales' ? '#10b981' : '#8b5cf6' }}></span>
+              <span className="legend-dot" style={{ backgroundColor: activeChartTab === 'Forecasted Sales' ? '#10b981' : '#0ea5e9' }}></span>
               <span>{activeChartTab}</span>
             </div>
           </div>
@@ -467,9 +459,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
         <div className="investment-card">
           <div className="card-header-row">
             <div className="card-title-group">
-              <span className="card-icon">💵</span>
               <span className="card-title-small">Category Performance</span>
-              <Info size={16} className="info-icon-small" />
             </div>
 
           </div>
@@ -525,9 +515,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
       <div className="kpi-table-card">
         <div className="card-header-row">
           <div className="card-title-group">
-            <span className="card-icon">📊</span>
             <span className="card-title">Product Category Performance</span>
-            <Info size={16} className="info-icon-small" />
           </div>
           <div className="card-controls" style={{ position: 'relative' }}>
             <button

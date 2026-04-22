@@ -11,11 +11,22 @@ router = APIRouter()
 
 @router.post("/upload")
 async def upload_dataset(file: UploadFile = File(...)):
-    if not file.filename.endswith(('.xlsx', '.xls')):
-        return {"error": "Invalid file type. Please upload an Excel file."}
+    if not file.filename.endswith(('.xlsx', '.xls', '.csv')):
+        return {"error": "Invalid file type. Please upload an Excel or CSV file."}
 
     content = await file.read()
     
+    if file.filename.endswith('.csv'):
+        import pandas as pd
+        import io
+        try:
+            df = pd.read_csv(io.BytesIO(content))
+            out = io.BytesIO()
+            df.to_excel(out, index=False, engine='openpyxl')
+            content = out.getvalue()
+        except Exception as e:
+            return {"error": f"Failed to parse CSV file: {str(e)}"}
+            
     # Process synchronously so dashboard stats and parquet are ready before returning
     save_file_sync(content)
 

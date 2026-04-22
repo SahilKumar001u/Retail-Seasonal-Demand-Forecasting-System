@@ -74,10 +74,10 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   };
 
   const handleFile = (uploadedFile) => {
-    const validTypes = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'];
+    const validTypes = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel', 'text/csv', 'application/csv'];
 
-    if (!validTypes.includes(uploadedFile.type)) {
-      setUploadStatus({ type: 'error', message: 'Please upload a valid Excel file (.xlsx or .xls)' });
+    if (!validTypes.includes(uploadedFile.type) && !uploadedFile.name.endsWith('.csv')) {
+      setUploadStatus({ type: 'error', message: 'Please upload a valid Excel or CSV file (.xlsx, .xls, .csv)' });
       return;
     }
 
@@ -170,7 +170,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
     <div className="upload-page">
       <div className="page-header">
         <h1>Upload Dataset</h1>
-        <p>Upload your retail sales data in Excel format</p>
+        <p>Upload your retail sales data in Excel or CSV format</p>
       </div>
 
       <div className="upload-container">
@@ -181,7 +181,7 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
           <h2>Upload Your Dataset</h2>
           <p className="upload-description">
-            Upload an Excel file (.xlsx or .xls) containing your retail sales data with columns:
+            Upload an Excel or CSV file (.xlsx, .xls, .csv) containing your retail sales data with columns:
             InvoiceDate, Description, Quantity, UnitPrice
           </p>
 
@@ -224,18 +224,18 @@ const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
             {!file ? (
               <>
                 <FileSpreadsheet size={64} className="drop-icon" />
-                <p className="drop-text">Drag and drop your Excel file here</p>
+                <p className="drop-text">Drag and drop your Excel or CSV file here</p>
                 <p className="drop-subtext">or</p>
                 <label className="browse-btn">
                   Browse Files
                   <input
                     type="file"
-                    accept=".xlsx,.xls"
+                    accept=".xlsx,.xls,.csv"
                     onChange={handleFileInput}
                     hidden
                   />
                 </label>
-                <p className="file-info">Supported formats: .xlsx, .xls (Max 50MB)</p>
+                <p className="file-info">Supported formats: .xlsx, .xls, .csv (Max 50MB)</p>
               </>
             ) : (
               <div className="file-preview">
