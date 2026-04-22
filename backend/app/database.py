@@ -3,14 +3,12 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-# Uses SQLite locally as a seamless fallback if Postgres isn't running
-# PRD requirement: PostgreSQL integration 
 SQLALCHEMY_DATABASE_URL = os.getenv(
     "DATABASE_URL", 
-    "sqlite:///./retail_data.db"  # Fallback
+    "sqlite:///./retail_data.db"  
 )
 
-# Connect args specific to SQLite, omitted if using PostgreSQL
+
 connect_args = {"check_same_thread": False} if "sqlite" in SQLALCHEMY_DATABASE_URL else {}
 
 engine = create_engine(
